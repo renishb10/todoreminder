@@ -6,7 +6,7 @@ const reminder = (action) => {
         id: Math.random()
     };
 
-    console.log(newText);
+    console.log('reducer', newText);
     return newText;
 };
 
