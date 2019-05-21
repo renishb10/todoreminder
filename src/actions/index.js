@@ -1,11 +1,12 @@
 import { ADD_REMINDER } from '../constants';
 import { DELETE_REMINDER } from '../constants';
 
-const addReminder = (text) => {
-    console.log('Im in Action', text);
+const addReminder = (text, dueDate) => {
+    console.log('Im in Action', text, dueDate);
     return {
         type: ADD_REMINDER,
-        text
+        text,
+        dueDate
     }
 };
 

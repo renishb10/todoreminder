@@ -7,12 +7,14 @@ class App extends Component {
   constructor(props) {
     super(props);
      this.state = {
-         text: ''
+         text: '',
+         dueDate: '',
      }
   }
 
   addThisReminder() {
-      this.props.addReminder(this.state.text);
+      console.log(this.state.dueDate);
+      this.props.addReminder(this.state.text, this.state.dueDate);
   }
 
   deleteReminder(id) {
@@ -28,7 +30,10 @@ class App extends Component {
                 reminders.map(reminder => {
                     return (
                         <li className="list-group-item" key={reminder.id}>
-                            <div className="list-item">{reminder.text}</div>
+                            <div className="list-item">
+                                <div>{reminder.text}</div>
+                                <div><em>{reminder.dueDate}</em></div>
+                            </div>
                             <div className="list-item delete-button"
                                 onClick={() => this.deleteReminder(reminder.id)}
                             >&#x2715;</div>
@@ -52,6 +57,9 @@ class App extends Component {
                 <input type="text" className="form-control"
                     placeholder="I wanna"
                     onChange={e => this.setState({ text: e.target.value })}
+                />
+                <input type="datetime-local" className="form-control"
+                    onChange={ e => this.setState({ dueDate: e.target.value })}
                 />
                 <button className="btn btn-success"
                     onClick={() => this.addThisReminder()}
